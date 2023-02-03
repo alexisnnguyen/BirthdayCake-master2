@@ -17,5 +17,6 @@ public class MainActivity extends AppCompatActivity {
     public void goodbye(View button) {
         //System.out.println("Goodbye");
         Log.i("button","Goodbye");
+        finishAffinity();
     }
 }
