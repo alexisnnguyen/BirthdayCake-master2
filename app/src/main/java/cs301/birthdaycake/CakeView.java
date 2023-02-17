@@ -18,6 +18,11 @@ public class CakeView extends SurfaceView {
     Paint wickPaint = new Paint();
     Paint red = new Paint();
     Paint green = new Paint();
+    Paint coords = new Paint();
+
+    Paint balloonPaint = new Paint();
+
+    Paint stringPaint = new Paint();
 
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
@@ -65,8 +70,14 @@ public class CakeView extends SurfaceView {
         wickPaint.setStyle(Paint.Style.FILL);
         red.setColor(Color.RED);
         green.setColor(Color.GREEN);
+        balloonPaint.setColor(Color.BLUE);
+        stringPaint.setColor(Color.BLACK);
 
         setBackgroundColor(Color.WHITE);  //better than black default
+
+        //coord drawing
+        coords.setTextSize(50.0f);
+        coords.setColor(Color.RED);
 
     }
 
@@ -94,6 +105,14 @@ public class CakeView extends SurfaceView {
             float wickLeft = left + candleWidth / 2 - wickWidth / 2;
             float wickTop = bottom - wickHeight - candleHeight;
             canvas.drawRect(wickLeft, wickTop, wickLeft + wickWidth, wickTop + wickHeight, wickPaint);
+
+        }
+    }
+
+    public void drawBalloon(Canvas canvas) {
+        if (cake.hasTouched) {
+            canvas.drawOval(cake.balloonX - 25, cake.balloonY - 40,cake.balloonX + 25 , cake.balloonY + 40, balloonPaint);
+            canvas.drawLine(cake.balloonX, cake.balloonY + 40, cake.balloonX, cake.balloonY + 100, stringPaint);
 
         }
     }
@@ -133,13 +152,15 @@ public class CakeView extends SurfaceView {
         for (int i = 1; i <= cake.numCandle; i++){
             drawCandle(canvas, cakeLeft + cakeWidth * i/(cake.numCandle+1) - candleWidth / 2, cakeTop);
         }
+
+        drawBalloon(canvas);
         //Now a candle
         //drawCandle(canvas, cakeLeft + cakeWidth / 3 - candleWidth / 2, cakeTop);
 
         //Draw second candle
         //drawCandle(canvas, cakeLeft + cakeWidth * 2 / 3 - candleWidth / 2, cakeTop);
 
-        if(cake.touch == true){
+        if(cake.hasTouched == true){
 
             //canvas.drawRect(cake.x-10,cake.y+10, cake.y, cake.x, green);
             //canvas.drawRect(cake.x , cake.y, cake.x + 10, cake.y+10, green);
@@ -153,9 +174,14 @@ public class CakeView extends SurfaceView {
 
             //bottom right red
             canvas.drawRect(cake.x-20, cake.y, cake.x, cake.y+20, red);
+            canvas.drawText(cake.balloonX + ", " + cake.balloonY, 1600f, 700f, coords);
         }
 
+
+
     }//onDraw
+
+
 
     public CakeModel getCake() {
         return cake;
