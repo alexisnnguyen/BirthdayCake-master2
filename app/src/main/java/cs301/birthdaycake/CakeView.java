@@ -167,13 +167,13 @@ public class CakeView extends SurfaceView {
             //canvas.drawRect(cake.x, cake.y + 10, cake.x+10, cake.y, red);
             //canvas.drawRect(cake.x - 10, cake.y, cake.x, cake.y+107, red);
 
-            canvas.drawRect(cake.x-20, cake.y-20, cake.x+20, cake.y+20, green);
+            canvas.drawRect(cake.balloonX-20, cake.balloonY-20, cake.balloonX+20, cake.balloonY+20, green);
 
             // top right red
-            canvas.drawRect(cake.x, cake.y-20,cake.x+20,cake.y, red);
+            canvas.drawRect(cake.balloonX, cake.balloonY-20,cake.balloonX+20,cake.balloonY, red);
 
             //bottom right red
-            canvas.drawRect(cake.x-20, cake.y, cake.x, cake.y+20, red);
+            canvas.drawRect(cake.balloonX-20, cake.balloonY, cake.balloonX, cake.balloonY+20, red);
             canvas.drawText(cake.balloonX + ", " + cake.balloonY, 1600f, 700f, coords);
         }
 
