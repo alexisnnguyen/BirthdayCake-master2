@@ -142,7 +142,7 @@ public class CakeView extends SurfaceView {
 
         //Draw coords
         if (cake.touch == true) {
-            canvas.drawText(cake.xCoord + "," + cake.yCoord, 1500f, 600f, coords);
+            canvas.drawText(cake.xCoord + ", " + cake.yCoord, 1600f, 700f, coords);
         }
 
     }//onDraw
