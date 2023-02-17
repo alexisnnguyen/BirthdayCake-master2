@@ -157,8 +157,8 @@ public class CakeView extends SurfaceView {
         //drawCandle(canvas, cakeLeft + cakeWidth * 2 / 3 - candleWidth / 2, cakeTop);
 
         //Draw coords
-        if (cake.touch == true) {
-            canvas.drawText(cake.xCoord + ", " + cake.yCoord, 1600f, 700f, coords);
+        if (cake.hasTouched == true) {
+            canvas.drawText(cake.balloonX + ", " + cake.balloonY, 1600f, 700f, coords);
         }
 
     }//onDraw
